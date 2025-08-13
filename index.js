@@ -47,7 +47,11 @@ try {
         <img class="crypto-img" src=${data.image.small} />
         <span>${data.name}</span>
     `
+    const conversion = Math.round(data.market_data.current_price.aud * 0.52903478)
+    const difference = conversion - 3260
     document.getElementById("crypto2").innerHTML += `
+        <p>$3260 ➡️ $${conversion}</p>
+        <p>$${difference}</p>
         <p>🟢 $5,992 AUD</p>
         <p class="crypto-font-md">🔴 $${data.market_data.current_price.aud} AUD | $${data.market_data.current_price.usd} USD</p>
         <p class="crypto-high-low">🔺 $${data.market_data.high_24h.aud} 🔻 $${data.market_data.low_24h.aud}</p>
@@ -120,7 +124,7 @@ navigator.geolocation.getCurrentPosition(async position => {
 
 navigator.geolocation.getCurrentPosition(async position => {
     try {
-        const res = await fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&cnt=7&appid=05f07fc776c1d7ecc7c3a7a003636d1b`)
+        const res = await fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&cnt=7`)
         if (!res.ok) {
             throw Error("Weather data not available")
         }
