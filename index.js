@@ -1,7 +1,7 @@
 // BACKGROUND IMAGE FROM UNSPLASH
 
 try {
-    const res = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=gradient")
+    const res = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=pink")
     const data = await res.json()
     document.body.style.backgroundImage = `url(${data.urls.regular})`
     document.getElementById("image-info").innerHTML = 
@@ -124,7 +124,7 @@ navigator.geolocation.getCurrentPosition(async position => {
 
 navigator.geolocation.getCurrentPosition(async position => {
     try {
-        const res = await fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&cnt=7`)
+        const res = await fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&cnt=7&appid=${API_KEY}`)
         if (!res.ok) {
             throw Error("Weather data not available")
         }
